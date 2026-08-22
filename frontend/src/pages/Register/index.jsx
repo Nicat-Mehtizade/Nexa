@@ -13,7 +13,7 @@ const Register = () => {
     const fetchRoles = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_BASE_URL}/api/roles`
+          `${import.meta.env.VITE_BASE_URL}/api/roles`,
         );
 
         setRoles(response.data.roles);
@@ -27,12 +27,9 @@ const Register = () => {
     fetchRoles();
   }, []);
 
-  return (
-    <div className="flex min-h-screen items-center bg-[#070911] p-5 md:p-10">
-      {/* Sənin bütün mövcud Register JSX kodun burada olacaq */}
-    </div>
-  );
-};
+  if (loadingRoles) {
+    return <div>Loading roles...</div>;
+  }
 
   return (
     <div className="flex min-h-screen items-center bg-[#070911] p-5 md:p-10">
@@ -96,13 +93,26 @@ const Register = () => {
                   >
                     Your role
                   </label>
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    placeholder="Enter your email"
-                    className="rounded-lg border border-transparent bg-[#111421] p-2 text-gray-500 placeholder:text-gray-500 transition-all duration-300 ease-in-out focus:border-[#3b18af] focus:outline-none focus:ring-2 focus:ring-[#3b18af]/30"
-                  />
+                  <select
+                    name="role"
+                    id="role"
+                    disabled={loadingRoles}
+                    className="cursor-pointer rounded-lg border border-transparent bg-[#111421] p-2 text-gray-400 transition-all duration-300 ease-in-out focus:border-[#3b18af] focus:outline-none focus:ring-2 focus:ring-[#3b18af]/30 disabled:cursor-not-allowed disabled:opacity-50"
+                  >
+                    <option value="">
+                      {loadingRoles ? "Loading roles..." : "Select your role"}
+                    </option>
+
+                    {roles.map((group) => (
+                      <optgroup key={group.category} label={group.category}>
+                        {group.roles.map((role) => (
+                          <option key={role} value={role}>
+                            {role}
+                          </option>
+                        ))}
+                      </optgroup>
+                    ))}
+                  </select>
                 </div>
                 <div className="flex flex-col mb-3">
                   <label
