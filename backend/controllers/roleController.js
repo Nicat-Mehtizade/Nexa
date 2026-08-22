@@ -1,0 +1,136 @@
+const getRoles = (req, res) => {
+  const roles = [
+    {
+      category: "Development",
+      roles: [
+        "Frontend Developer",
+        "Backend Developer",
+        "Full Stack Developer",
+        "Mobile Developer",
+        "iOS Developer",
+        "Android Developer",
+        "React Developer",
+        "Vue.js Developer",
+        "Angular Developer",
+        "Node.js Developer",
+        "JavaScript Developer",
+        "TypeScript Developer",
+        "Python Developer",
+        "Java Developer",
+        "C# Developer",
+        "PHP Developer",
+        "Ruby Developer",
+        "Go Developer",
+        "Rust Developer",
+        "DevOps Engineer",
+        "Cloud Engineer",
+        "Software Engineer",
+        "QA Engineer",
+        "Automation Engineer",
+        "Data Engineer",
+        "Data Scientist",
+        "Machine Learning Engineer",
+        "AI Engineer",
+        "Cybersecurity Specialist",
+        "Game Developer",
+        "Blockchain Developer",
+        "Embedded Systems Engineer",
+        "Other Developer",
+      ],
+    },
+    {
+      category: "Design",
+      roles: [
+        "UI Designer",
+        "UX Designer",
+        "UI/UX Designer",
+        "Product Designer",
+        "Graphic Designer",
+        "Motion Designer",
+        "3D Designer",
+        "Web Designer",
+        "Brand Designer",
+        "Illustrator",
+        "Other Designer",
+      ],
+    },
+    {
+      category: "Product & Management",
+      roles: [
+        "Product Manager",
+        "Project Manager",
+        "Product Owner",
+        "Scrum Master",
+        "Business Analyst",
+        "Operations Manager",
+        "Team Lead",
+        "Engineering Manager",
+      ],
+    },
+    {
+      category: "Marketing & Sales",
+      roles: [
+        "Digital Marketer",
+        "Content Marketer",
+        "SEO Specialist",
+        "Social Media Manager",
+        "Marketing Manager",
+        "Brand Manager",
+        "Sales Representative",
+        "Sales Manager",
+        "Growth Manager",
+      ],
+    },
+    {
+      category: "Writing & Content",
+      roles: [
+        "Writer",
+        "Content Writer",
+        "Copywriter",
+        "Technical Writer",
+        "Editor",
+        "Journalist",
+        "Blogger",
+        "Scriptwriter",
+      ],
+    },
+    {
+      category: "Business & Finance",
+      roles: [
+        "Entrepreneur",
+        "Business Owner",
+        "Accountant",
+        "Financial Analyst",
+        "Finance Manager",
+        "HR Specialist",
+        "Recruiter",
+      ],
+    },
+    {
+      category: "Education & Research",
+      roles: [
+        "Student",
+        "Teacher",
+        "Lecturer",
+        "Researcher",
+        "Professor",
+      ],
+    },
+    {
+      category: "Other",
+      roles: [
+        "Freelancer",
+        "Consultant",
+        "Other",
+      ],
+    },
+  ];
+
+  res.status(200).json({
+    roles,
+  });
+};
+
+module.exports = {
+  getRoles,
+};

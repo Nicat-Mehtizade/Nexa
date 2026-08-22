@@ -1,9 +1,21 @@
+require("dotenv").config();
+
 const express = require("express");
 const cors = require("cors");
 
+const connectDB = require("./config/db");
+const authRoutes = require("./routes/authRoutes");
+const roleRoutes = require("./routes/roleRoutes");
 const app = express();
 
-app.use(cors());
+connectDB();
+
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL || "http://localhost:5173",
+  })
+);
+
 app.use(express.json());
 
 app.get("/", (req, res) => {
@@ -11,6 +23,9 @@ app.get("/", (req, res) => {
     message: "Nexa API is running",
   });
 });
+
+app.use("/api/auth", authRoutes);
+app.use("/api/roles", roleRoutes);
 
 const PORT = process.env.PORT || 5000;
 

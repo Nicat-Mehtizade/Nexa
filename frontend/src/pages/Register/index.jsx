@@ -2,7 +2,38 @@ import nexaLogo from "../../assets/Nexa-logo.png";
 import RegisterPhoto from "../../assets/Register-Photo.png";
 import { FaArrowLeft } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 const Register = () => {
+  const [roles, setRoles] = useState([]);
+  const [loadingRoles, setLoadingRoles] = useState(true);
+
+  useEffect(() => {
+    const fetchRoles = async () => {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_BASE_URL}/api/roles`
+        );
+
+        setRoles(response.data.roles);
+      } catch (error) {
+        console.error("Roles could not be fetched:", error);
+      } finally {
+        setLoadingRoles(false);
+      }
+    };
+
+    fetchRoles();
+  }, []);
+
+  return (
+    <div className="flex min-h-screen items-center bg-[#070911] p-5 md:p-10">
+      {/* Sənin bütün mövcud Register JSX kodun burada olacaq */}
+    </div>
+  );
+};
+
   return (
     <div className="flex min-h-screen items-center bg-[#070911] p-5 md:p-10">
       <div className="mx-auto max-w-7xl">
